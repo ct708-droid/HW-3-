@@ -1,0 +1,38 @@
+---
+title: "E-commerce Sales"
+author: "Chirag Tahiliani"
+date: "2026-09-26"
+output: html_document
+---
+
+```{r}
+ECOMNSA <- read.csv("~/Downloads/ECOMNSA.csv")
+
+sales <- ts(ECOMNSA$ECOMNSA, start = c(1999, 4), frequency = 4)
+
+plot(sales, xlab = "Year", ylab = "E-Commerce Sales (millions of dollars)")
+
+```
+
+# Data Description 
+I chose U.S. E-Commerce Retail Sales from FRED, using data originally collected by the U.S. Census Bureau. The dataset has 107 quarterly observations from Q4 1999 to Q2 2026. Each row shows total retail e-commerce sales for one quarter, measured in millions of U.S. dollars.
+
+The data is not adjusted for seasonality or inflation. There are no missing values. Sales generally rise over time, with repeated peaks in the fourth quarter.
+
+# Data Dictionary 
+
+| Variable | Readable Name | Format and Units | Definition | Allowed Values and Observed Range |
+|---|---|---|---|---|
+| observation_date | Quarter start date | Date: YYYY-MM-DD | First day of the quarter that the sales cover. | January 1, April 1, July 1, or October 1. Observed dates: 1999-10-01 to 2026-04-01. |
+| ECOMNSA | Quarterly e-commerce sales | Numeric; millions of U.S. dollars | Estimated U.S. retail e-commerce sales for the quarter, not seasonally adjusted. | Nonnegative numbers. Observed minimum: 5,225. Observed maximum: 365,160. |
+
+For example, 5,225 means $5.225 billion in sales. Neither column has missing values.
+
+# Data Collection Method 
+The U.S. Census Bureau collects the data through the Monthly Retail Trade Survey. It samples approximately 10,800 retail firms and asks them to report e-commerce sales each month. Responses are weighted to represent U.S. retail employer businesses, and missing responses are estimated using similar businesses.
+
+The monthly estimates are added together to produce quarterly totals. The results are published in the Quarterly E-Commerce Report and may be revised later. I downloaded the data as a CSV from FRED.
+
+# Why this Data interests me 
+
+I chose this dataset because I study supply chain analytics and work at Symbotic, a warehouse automation company. E-commerce sales connect to inventory, warehouse space, and shipping needs. I want to see how sales change throughout the year and learn how forecasting can help businesses plan for demand.
